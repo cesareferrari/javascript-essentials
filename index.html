@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Javascript Essentials course</title>
+
+    <style>
+.card {
+  background-color: lightgray;
+  border: 1px solid darkgray;
+  padding: 1em;
+  width: 50%;
+  margin: 2rem auto;
+}
+     .card p {
+       margin: .5rem;
+       background-color: lightyellow;
+       text-align: center;
+     }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Essentials course</h1>
+    <p id="paragraph">This file is for the Javascript Essentials course.</p>
+
+    <h2>Change Username</h2>
+    <p>Enter your username and password to change your username.</p>
+
+    <form id="change-username">
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input password-field type="password" name="password" id="password">
+      </div>
+
+      <div>
+        <label for="show-password">
+          <input type="checkbox" name="show-password" id="show-password">
+          Show password
+        </label>
+      </div>
+
+      <p>
+      <button type="submit">Change Username</button>
+      </p>
+    </form>
+
+
+    <h2>Change Password</h2>
+    <p>Enter your current password and new password below.</p>
+
+    <form id="change-password">
+      <div>
+        <label for="current-password">Current Password</label>
+        <input password-field type="password" name="current-password" id="current-password">
+      </div>
+
+      <div>
+        <label for="new-password">New Password</label>
+        <input password-field type="password" name="new-password" id="new-password">
+      </div>
+
+      <div>
+        <label for="show-passwords">
+          <input type="checkbox" name="show-passwords" id="show-passwords">
+          Show passwords
+        </label>
+      </div>
+
+      <p>
+      <button type="submit">Change Passwords</button>
+      </p>
+    </form>
+
+
+
+    <div data-paragraph class="card">
+      <p>1</p>
+      <p>2</p>
+      <p class="red" data-snack>Orange</p>
+      <p>4</p>
+      <p>5</p>
+
+      <button data-add-snack>Add snack</button>
+    </div>
+
+
+    <script src="index.js"></script>
+  </body>
+</html>
