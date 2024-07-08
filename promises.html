@@ -9,8 +9,31 @@
   <body class="prose max-w-lg mx-auto">
     <h1>Promises</h1>
 
-    <p>Wait 5 seconds for a `Hi, universe` message to appear in the console.</p>
-    <p>Wait 5 more seconds for a `Goodbye` message to appear in the console.</p>
+    <p>
+    In the Javascript I have a promise that runs after 5 seconds and prints a
+    message to the console.
+    </p>
+
+
+    <pre>
+    <code>
+    let sayHello = new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        resolve("Hello world");
+      }, 5000)
+    });
+
+    sayHello.
+      then((msg) => {
+        console.log(msg)
+        return msg
+      }).
+      then((msg) => {
+        msg += " and hello universe"
+        console.log(msg);
+      })
+    </code>
+    </pre>
 
 
     <script src="javascripts/promises.js"></script>
