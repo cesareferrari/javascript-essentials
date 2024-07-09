@@ -13,3 +13,15 @@ sayHello.
     msg += " and hello universe"
     console.log(msg);
   })
+
+let dontSayHello = new Promise((resolve, reject) => {
+  reject("unable to say hello");
+})
+
+dontSayHello.
+  then((msg) => {
+    console.log(msg)
+  }).
+  catch((msg) => {
+    console.log(msg);
+  })
