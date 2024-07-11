@@ -4,7 +4,7 @@ let quoteContainer = document.querySelector("#quote-container");
 let button = document.querySelector("#get-quote");
 let quotes = [];
 
-let quote = getQuote();
+getQuote();
 
 function getQuote () {
   fetch(url).
