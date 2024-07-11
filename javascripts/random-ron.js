@@ -1,9 +1,10 @@
 let url = 'https://ron-swanson-quotes.herokuapp.com/v2/quotes';
 
-let quote = document.querySelector("#quote");
+let quoteContainer = document.querySelector("#quote-container");
 let button = document.querySelector("#get-quote");
+let quotes = [];
 
-getQuote();
+let quote = getQuote();
 
 function getQuote () {
   fetch(url).
@@ -15,12 +16,23 @@ function getQuote () {
       throw response.status;
     }).
     then((data) => {
-      quote.textContent = data[0];
+      if (quotes.length > 49) {
+        quotes.shift();
+      }
+
+      if (quotes.includes(data[0])) {
+        getQuote();
+        return;
+      }
+
+      quoteContainer.textContent = data[0];
+      quotes.push(data[0])
     }).
     catch((err) => {
       quote.textContent = `Something went wrong! ${err}`;
     })
 }
+
 
 button.addEventListener("click", getQuote);
 
