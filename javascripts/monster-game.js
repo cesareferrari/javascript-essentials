@@ -81,11 +81,49 @@ function shuffle (array) {
 shuffle(monsters);
 
 app.innerHTML = `
+<p>Click a door to reveal a monster.</p>
 <div class="row">
-${monsters.map((monster) => {
-  return `<div class="grid">
-      <img alt="${monster.alt}" src="images/${monster.name}.svg" />
+${monsters.map((monster, index) => {
+  return `<div class="grid" aria-live="polite">
+    <button data-monster="${index}"><img alt="Door" src="images/door.svg" /></button>
     </div>`
 }).join('')}
 </div>
 `
+
+document.addEventListener('click', clickHandler);
+
+function clickHandler (event) {
+
+  // get the monster
+  let btn = event.target.closest('[data-monster]');
+  if (!btn) return;
+  let monster = monsters[btn.getAttribute('data-monster')];
+  if (!monster) return
+
+  // create the monster image
+  let img = document.createElement('img');
+  img.src = `images/${monster.name}.svg`;
+  img.alt = monster.alt;
+
+  btn.replaceWith(img);
+}
+
+//document.addEventListener('click', (event) => {
+//  let monster = monsters.find((monster) => {
+//    return monster.name === event.target.dataset["monster"];
+//  })
+
+//  //let image = document.createElement(`<img src="images/${monster.name}.svg" alt="${monster.alt}" />`);
+
+//  if (monster.name === 'sock') {
+//    alert("You lost");
+//    return;
+//  }
+
+//  let image = document.createElement('img');
+//  image.src = `images/${monster.name}.svg`;
+//  image.alt = `${monster.alt}`
+
+//  event.target.replaceWith(image)
+//})
