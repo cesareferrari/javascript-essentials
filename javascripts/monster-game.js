@@ -50,6 +50,7 @@ let monsters = [
 ];
 
 let app = document.querySelector("#app");
+let found = 0;
 
 /**
  * Randomly shuffle an array
@@ -100,6 +101,21 @@ function clickHandler (event) {
   if (!btn) return;
   let monster = monsters[btn.getAttribute('data-monster')];
   if (!monster) return
+
+  // if a sock was found, show the `lost` message
+  if (monster.name === "sock") {
+    window.location.href = "monster-game-lost.html";
+    return;
+  }
+
+  // otherwise increment the monster found count by 1
+  found++;
+
+  // if all monsters have been found, show the `won` message
+  if (found === (monsters.length - 1)) {
+    window.location.href = "monster-game-won.html";
+    return;
+  }
 
   // create the monster image
   let img = document.createElement('img');

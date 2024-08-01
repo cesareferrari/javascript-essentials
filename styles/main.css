@@ -1364,3 +1364,24 @@ select {
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
+
+/**
+ * Scale image to the full width of the page
+ */
+
+.img-full {
+  width: 100%;
+}
+
+/**
+ * Style link to look like a button
+ */
+
+.btn {
+  background-color: #f7f7f7;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.1875em;
+  color: #000000;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
