@@ -1339,6 +1339,10 @@ select {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .h-52 {
   height: 13rem;
 }
@@ -1361,17 +1365,23 @@ select {
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
+/**
+ * Scale image to the full width of the page
+ */
+
+.img-full {
+  width: 100%;
 }
 
-.text-sky-400 {
-  --tw-text-opacity: 1;
-  color: rgb(56 189 248 / var(--tw-text-opacity));
-}
+/**
+ * Style link to look like a button
+ */
 
-.text-sky-600 {
-  --tw-text-opacity: 1;
-  color: rgb(2 132 199 / var(--tw-text-opacity));
+.btn {
+  background-color: #f7f7f7;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.1875em;
+  color: #000000;
+  padding: 0.5em 1em;
+  text-decoration: none;
 }
