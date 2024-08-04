@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form autosave</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+
+    <style type="text/css">
+      label,
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+      }
+
+      input,
+      textarea {
+        margin-bottom: 1em;
+      }
+
+      textarea {
+        height: 8em;
+      }
+    </style>
+
+  </head>
+  <body class="prose max-w-lg mx-auto">
+    <h1>Form autosave</h1>
+
+    <form id="save-me">
+
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name">
+
+      <label for="address">Address</label>
+      <input type="text" id="address">
+
+      <label for="email">Email</label>
+      <input type="email" id="email">
+
+      <label for="more">Additional thoughts?</label>
+      <textarea name="more" id="more"></textarea>
+
+      <p>
+      <button type="submit" class="button">Submit</button>
+      </p>
+
+    </form>
+
+    <p><a href="index.html">&larr; Back to Index</a></p>
+
+    <script src="javascripts/form-autosave.js"></script>
+  </body>
+</html>
