@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object properties</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+  <body class="prose max-w-lg mx-auto">
+  <h1>Object properties</h1>
+
+  <p>Playing with object properties and the `defineProperties` method. See the
+    console
+  </p>
+
+  <a href="index.html">&larr; Back to Index</a>
+
+  <script>
+    let person = {};
+
+    Object.defineProperties(person, {
+      name: {value: "Cesare"},
+      age: {value: 65},
+      address: {
+        value: "123 Main St",
+        writable: true
+      }
+    })
+
+    console.log(person);
+    //{name: 'Cesare', age: 65, address: '123 Main St'}
+
+    person.address = "307 Green Ridge Drive"
+    person.name = "Mary"
+
+    console.log(person);
+    // Address  is changed, but name is still the same:
+    // {name: 'Cesare', age: 65, address: '307 Green Ridge Drive'}
+  </script>
+</body>
+</html>
