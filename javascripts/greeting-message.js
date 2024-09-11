@@ -4,9 +4,11 @@ class GreetingMessage extends HTMLElement {
   constructor () {
     super();
 
+    let btnText = this.innerHTML.trim();
+
     this.innerHTML = `
       <p>
-        <button class="button">Hi there.</button>
+        <button class="button">${btnText ? btnText : 'Hi, there!'}</button>
       </p>
 
       <div class="message" aria-live="polite"></div>
@@ -27,3 +29,21 @@ if ('customElements' in window) {
   customElements.define('greeting-message', GreetingMessage);
 }
 
+
+// another custom web component
+class CompanyCard extends HTMLElement {
+  constructor () {
+    super();
+
+    this.innerHTML = `
+    <div>
+    ${this.hasAttribute('wave') ? '&#128075;' : ''}
+      Hello world!
+    </div>
+    `
+  }
+}
+
+if ('customElements' in window) {
+  customElements.define('company-card', CompanyCard);
+}
