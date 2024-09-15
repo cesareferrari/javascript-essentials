@@ -15,11 +15,33 @@ class GreetingMessage extends HTMLElement {
     `;
   }
 
+  // create a list of attributes to observe
+  static get observedAttributes () {
+    return ['logout'];
+  }
+
+  // runs when a value of an attribute is changed on the component
+  attributeChangedCallback (name, oldValue, newValue) {
+    // remove button
+    let btn = this.querySelector('button');
+    if (btn) {
+      btn.removeEventListener('click', this.clickHandler);
+      btn.remove();
+    }
+
+    // get the `message` element
+    let target = this.querySelector('.message');
+    if (target) {
+      // inject the message into the UI
+      let name = this.getAttribute('name');
+      target.textContent = `Bye ${name ? name : 'friend'}`
+    }
+  }
+
   connectedCallback () {
     let btn = this.querySelector('button');
     if (!btn) return;
     btn.addEventListener("click", function (event) {
-      console.log("Inside event listener `this` is: ", this);
 
       // get the host component
       let host = event.target.closest('greeting-message')
