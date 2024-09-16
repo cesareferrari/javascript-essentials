@@ -38,30 +38,35 @@ class GreetingMessage extends HTMLElement {
     }
   }
 
+  // Handle click events on the button
+  clickHandler (event) {
+    // get the host component
+    let host = event.target.closest('greeting-message')
+
+    // get the message element
+    let target = host.querySelector('.message')
+    if (!target) return;
+
+    // inject the message into the UI
+    target.textContent = "Hi there, friend! Have a good day."
+
+    // clear the message after 5 seconds
+    setTimeout(function () {
+      target.textContent = "";
+    }, 5000);
+  }
+
   connectedCallback () {
     let btn = this.querySelector('button');
     if (!btn) return;
-    btn.addEventListener("click", function (event) {
-
-      // get the host component
-      let host = event.target.closest('greeting-message')
-
-      // get the message element
-      let target = host.querySelector('.message')
-      if (!target) return;
-
-      // inject the message into the UI
-      target.textContent = "Hi there, friend! Have a good day."
-
-      // clear the message after 5 seconds
-      setTimeout(function () {
-        target.textContent = "";
-      }, 5000);
-    })
+    btn.addEventListener("click", this.clickHandler);
   }
 
   disconnectedCallback () {
-    console.log("Disconnected.", this);
+    // remove the click event listener from the button
+    let btn = this.querySelector('button');
+    if (!btn) return;
+    btn.removeEventListener("click", this.clickHandler);
   }
 }
 
