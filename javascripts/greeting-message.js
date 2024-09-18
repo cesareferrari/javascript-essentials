@@ -4,9 +4,12 @@ class GreetingMessage extends HTMLElement {
   constructor () {
     super();
 
+    // create a shadow root
+    this.root = this.attachShadow({mode: 'closed'});
+
     let btnText = this.innerHTML.trim();
 
-    this.innerHTML = `
+    this.root.innerHTML = `
       <p>
         <button class="button">${btnText ? btnText : 'Hi, there!'}</button>
       </p>
@@ -30,7 +33,7 @@ class GreetingMessage extends HTMLElement {
     }
 
     // get the `message` element
-    let target = this.querySelector('.message');
+    let target = this.root.querySelector('.message');
     if (target) {
       // inject the message into the UI
       let name = this.getAttribute('name');
@@ -41,10 +44,10 @@ class GreetingMessage extends HTMLElement {
   // Handle click events on the button
   clickHandler (event) {
     // get the host component
-    let host = event.target.closest('greeting-message')
+    let host = event.target.getRootNode().host;
 
     // get the message element
-    let target = host.querySelector('.message')
+    let target = host.root.querySelector('.message')
     if (!target) return;
 
     // inject the message into the UI
@@ -57,14 +60,14 @@ class GreetingMessage extends HTMLElement {
   }
 
   connectedCallback () {
-    let btn = this.querySelector('button');
+    let btn = this.root.querySelector('button');
     if (!btn) return;
     btn.addEventListener("click", this.clickHandler);
   }
 
   disconnectedCallback () {
     // remove the click event listener from the button
-    let btn = this.querySelector('button');
+    let btn = this.root.querySelector('button');
     if (!btn) return;
     btn.removeEventListener("click", this.clickHandler);
   }
